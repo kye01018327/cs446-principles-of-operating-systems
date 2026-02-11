@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <sys/stat.h>
 
 int parseInput(char * input, char splitWord[][500], int maxWords);
 void changeDirectories();
@@ -64,10 +70,48 @@ int main() {
         }
         // if no redirection (single CLI command)
         else {
-            // pass
+            // Dynamically allocated c-string array
+            // one more than the number of valid CLI elements
+            int numValidElements = 0;
+            for (int i = 0; i < maxWords; i++) {
+                if (splitWord[i][0] == 0) {
+                    break;
+                }
+                numValidElements++;
+            }
+            // printf("num valid elements: %d\n", numValidElements);
+            char ** a = malloc((numValidElements + 1) * sizeof(char*));
+            if (a == NULL) {
+                printf("Memory allocation to 'a' array failed");
+                return 1;
+            }
+            for (int i = 0; i < numValidElements; i++) {
+                a[i] = malloc(500 * sizeof(char));
+                strcpy(a[i], splitWord[i]);
+            }
+            a[numValidElements] = NULL;
+
+            printf("\nDYNAMICALLY ALLOCATED ARRAY CONTENTS------\n");
+            for (int i = 0; i < numValidElements; i++) {
+                printf("%s ", a[i]);
+                for (int j = 0; j < 500; j++) {
+                    printf("%d ", a[i][j]);
+                    if (a[i][j] == 0) {
+                        printf("\n");
+                        break;
+                    }
+                }
+            }
+            printf("%s\n\n", a[numValidElements]);
+
+            // free memory
+            for (int i = 0; i < numValidElements + 1; i++) {
+                free(a[i]);
+            }
+            free(a);
         }
 
-
+        
         // debug
         printf("Parsed Input:");
         for (int i = 0; i < maxWords; i++) {
