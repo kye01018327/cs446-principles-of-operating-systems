@@ -12,15 +12,22 @@ int main() {
     getcwd(cwd, sizeof(cwd));
 
     int maxWords = 10;
-    char splitWord[maxWords][1];
+    char splitWord[maxWords][500];
     memset(splitWord, 0, sizeof(splitWord));
 
     char userInput[500];
 
     while (1) {
         printf("%s:%s$ ", netid, cwd);
-        scanf("%s", userInput);
-        printf("%s\n", userInput);
+        scanf(" %[^\n]", userInput);
+        printf("User Input: %s\n", userInput);
+        parseInput(userInput, splitWord, maxWords);
+        printf("Parsed Input:");
+        for (int i = 0; i < maxWords; i++) {
+            printf(" %s", splitWord[i]);
+        }
+        printf("\n");
+        memset(splitWord, 0, sizeof(splitWord));
     }
 
 
