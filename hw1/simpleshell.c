@@ -11,16 +11,17 @@
 int parseInput(char * input, char splitWord[][500], int maxWords);
 void changeDirectories();
 enum CommandType detectCommandType(char splitWord[][500], int maxWords, int * redirectionIdx);
-int createCommand(char *** command, char splitWord[][500], int maxWords);
+int createCommand(char *** command, char splitWord[][500], int start, int end);
 void freeCommandMem(char *** command, int size);
 void displayCommand(char *** command, int size);
-void executeCommand();
+int executeCommand(char * const* commannd, const char* infile, const char* outfile, char * const* command_2);
+int createFile(char buffer[], char * fileName);
 
 void handleCd(char cwd[], int size);
 void handleSimpleCommand(char splitWord[][500], int maxWords);
 void handleInputRedirection(char splitWord[][500], int maxWords, int redirectionIdx);
 void handleOutputRedirection(char splitWord[][500], int maxWords, int redirectionIdx);
-void handlePipe();
+void handlePipe(char splitWord[][500], int maxWords, int redirectionIdx);
 
 enum CommandType {
     CMD_CD,
@@ -55,7 +56,7 @@ int main() {
             case CMD_SIMPLE: handleSimpleCommand(splitWord, maxWords); break;
             case CMD_INPUT_REDIRECTION: handleInputRedirection(splitWord, maxWords, redirectionIdx); break;
             case CMD_OUTPUT_REDIRECTION: handleOutputRedirection(splitWord, maxWords, redirectionIdx); break;
-            case CMD_PIPE: handlePipe(); break;
+            case CMD_PIPE: handlePipe(splitWord, maxWords, redirectionIdx); break;
         }
         memset(splitWord, 0, sizeof(splitWord));
     }
@@ -73,7 +74,7 @@ int parseInput(char * input, char splitWord[][500], int maxWords) {
 }
 
 void changeDirectories() {
-    printf("changeDirectories called\n");
+    // printf("changeDirectories called\n");
     return;
 }
 
@@ -103,33 +104,29 @@ enum CommandType detectCommandType(char splitWord[][500], int maxWords, int * re
     
 }
 
-int createCommand(char *** command, char splitWord[][500], int maxWords) {
-    printf("\ncreateCommand called\n");
+int createCommand(char *** command, char splitWord[][500], int start, int end) {
+    // printf("\ncreateCommand called\n");
     // Dynamically allocated c-string array
     // one more than the number of valid CLI elements
-    int numValidElements = 0;
-    for (int i = 0; i < maxWords; i++) {
+    int size = 0;
+    for (int i = start; i < end; i++) {
         if (splitWord[i][0] == 0) {
             break;
         }
-        numValidElements++;
+        size++;
     }
-    // printf("num valid elements: %d\n", numValidElements);
-    *command = malloc((numValidElements + 1) * sizeof(char*));
-    if (*command == NULL) {
-        printf("Memory allocation to 'command' array failed");
-        return 1;
-    }
-    for (int i = 0; i < numValidElements; i++) {
+    *command = malloc((size + 1) * sizeof(char*));
+
+    for (int i = 0; i < size; i++) {
         (*command)[i] = malloc(500 * sizeof(char));
-        strcpy((*command)[i], splitWord[i]);
+        strcpy((*command)[i], splitWord[start + i]);
     }
-    (*command)[numValidElements] = NULL;
+    (*command)[size] = NULL;
 
-    displayCommand(command, numValidElements);
+    // displayCommand(command, size);
 
-    printf("%s\n\n", (*command)[numValidElements]);
-    return numValidElements;
+    // printf("%s\n\n", (*command)[size]);
+    return size;
 }
 
 void freeCommandMem(char *** command, int size) {
@@ -153,39 +150,174 @@ void displayCommand(char *** command, int size) {
     }
 }
 
-void executeCommand() {
-    printf("executeCommand function called\n");
-    return;
+int executeCommand(
+    char * const* command, 
+    const char* infile, 
+    const char* outfile, 
+    char * const* command_2
+) {
+
+    int pipe_fds[2];
+    pid_t pid1, pid2;
+    int status;
+
+    int isPipe = (command_2 != NULL);
+
+    // Step 1: Create pipe if needed
+    if (isPipe) {
+        if (pipe(pipe_fds) == -1) {
+            perror("pipe failed");
+            return -1;
+        }
+    }
+
+    // Step 2: Fork first child
+    pid1 = fork();
+    if (pid1 < 0) {
+        // Fork failed
+        fprintf(stderr, "fork Failed: %s\n", strerror(errno));
+        return -1;
+    }
+
+    if (pid1 == 0) {
+        // ---- First child ----
+        // Input redirection
+        if (infile && infile[0] != '\0') {
+            int fd_in = open(infile, O_RDONLY);
+            if (fd_in < 0) {
+                fprintf(stderr, "open infile Failed: %s\n", strerror(errno));
+                _exit(1);
+            }
+            dup2(fd_in, STDIN_FILENO);
+            close(fd_in);
+        }
+
+        // Output redirection
+        if (outfile && outfile[0] != '\0' && !isPipe) {
+            int fd_out = open(outfile, O_WRONLY | O_CREAT | O_TRUNC, 0666);
+            if (fd_out < 0) {
+                fprintf(stderr, "open outfile Failed: %s\n", strerror(errno));
+                _exit(1);
+            }
+            dup2(fd_out, STDOUT_FILENO);
+            close(fd_out);
+        }
+
+        // Pipe output if needed
+        if (isPipe) {
+            dup2(pipe_fds[1], STDOUT_FILENO); // redirect stdout to pipe
+            close(pipe_fds[0]);
+            close(pipe_fds[1]);
+        }
+
+        // Execute command
+        execvp(command[0], command);
+        // If execvp returns, an error occurred
+        fprintf(stderr, "exec Failed: %s\n", strerror(errno));
+        _exit(1);
+    }
+
+    // Step 3: Fork second child if pipe
+    if (isPipe) {
+        pid2 = fork();
+        if (pid2 < 0) {
+            fprintf(stderr, "fork Failed: %s\n", strerror(errno));
+            return -1;
+        }
+
+        if (pid2 == 0) {
+            // ---- Second child ----
+            // Pipe input
+            dup2(pipe_fds[0], STDIN_FILENO); // read from pipe
+            close(pipe_fds[0]);
+            close(pipe_fds[1]);
+
+            // Output redirection if requested
+            if (outfile && outfile[0] != '\0') {
+                int fd_out = open(outfile, O_WRONLY | O_CREAT | O_TRUNC, 0666);
+                if (fd_out < 0) {
+                    fprintf(stderr, "open outfile Failed: %s\n", strerror(errno));
+                    _exit(1);
+                }
+                dup2(fd_out, STDOUT_FILENO);
+                close(fd_out);
+            }
+
+            execvp(command_2[0], command_2);
+            fprintf(stderr, "exec Failed: %s\n", strerror(errno));
+            _exit(1);
+        }
+
+        // ---- Parent process for pipe ----
+        close(pipe_fds[0]);
+        close(pipe_fds[1]);
+        waitpid(pid1, &status, 0);
+        waitpid(pid2, &status, 0);
+    } else {
+        // ---- Parent process for single command ----
+        waitpid(pid1, &status, 0);
+    }
+
+    return 0; // Success
+}
+
+int createFile(char buffer[], char * fileName) {
+    // printf("\ncreateFile called\n");
 }
 
 void handleCd(char cwd[], int size) {
-    printf("\nhandleCd called\n");
+    // printf("\nhandleCd called\n");
     changeDirectories();
     getcwd(cwd, size);
 }
 
 void handleSimpleCommand(char splitWord[][500], int maxWords) {
-    printf("\nhandleSimpleCommand called\n");
+    // printf("\nhandleSimpleCommand called\n");
     char ** command = NULL;
-    int size = createCommand(&command, splitWord, maxWords);
-    executeCommand();
+    int size = createCommand(&command, splitWord, 0, maxWords);
+    
+    executeCommand(command, NULL, NULL, NULL);
+
     freeCommandMem(&command, size);
 }
 
 void handleInputRedirection(char splitWord[][500], int maxWords, int redirectionIdx) {
-    printf("\nhandleInputRedirection called\n");
+    // printf("\nhandleInputRedirection called\n");
     char ** command = NULL;
-    int size = createCommand(&command, splitWord, redirectionIdx);
+    int size = createCommand(&command, splitWord, 0, redirectionIdx);
+
+    char infile[500] = "";
+    strcpy(infile, splitWord[redirectionIdx + 1]);
+
+    executeCommand(command, infile, NULL, NULL);
+
     freeCommandMem(&command, size);
 }
 
 void handleOutputRedirection(char splitWord[][500], int maxWords, int redirectionIdx) {
-    printf("\nhandleOutputRedirection called\n");
+    // printf("\nhandleOutputRedirection called\n");
     char ** command = NULL;
-    int size = createCommand(&command, splitWord, redirectionIdx);
+    int size = createCommand(&command, splitWord, 0, redirectionIdx);
+
+    char outfile[500] = "";
+    strcpy(outfile, splitWord[redirectionIdx + 1]);
+
+    executeCommand(command, NULL, outfile, NULL);
+
     freeCommandMem(&command, size);
 }
 
-void handlePipe() {
-    printf("\nhandlePipe called\n");
+void handlePipe(char splitWord[][500], int maxWords, int redirectionIdx) {
+    // printf("\nhandlePipe called\n");
+    char ** command_1 = NULL;
+    int size_1 = createCommand(&command_1, splitWord, 0, redirectionIdx);
+
+    char ** command_2 = NULL;
+    int size_2 = createCommand(&command_2, splitWord, redirectionIdx + 1, maxWords);
+
+    executeCommand(command_1, NULL, NULL, command_2);
+
+    freeCommandMem(&command_1, size_1);
+    freeCommandMem(&command_2, size_2);
+    
 }
