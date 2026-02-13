@@ -15,7 +15,6 @@ int createCommand(char *** command, char splitWord[][500], int start, int end);
 void freeCommandMem(char *** command, int size);
 void displayCommand(char *** command, int size);
 int executeCommand(char * const* commannd, const char* infile, const char* outfile, char * const* command_2);
-int createFile(char buffer[], char * fileName);
 
 void handleCd(char splitWord[][500], char cwd[], int size);
 void handleSimpleCommand(char splitWord[][500], int maxWords);
@@ -250,10 +249,6 @@ int executeCommand(
     }
 
     return 0;
-}
-
-int createFile(char buffer[], char * fileName) {
-    // printf("\ncreateFile called\n");
 }
 
 void handleCd(char splitWord[][500], char cwd[], int size) {

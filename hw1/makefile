@@ -1,5 +1,5 @@
 all:
-	gcc simpleshell.c -o simpleshell
+	gcc -Wall simpleshell.c -o simpleshell
 
 run:
 	./simpleshell
