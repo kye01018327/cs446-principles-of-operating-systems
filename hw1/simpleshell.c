@@ -9,7 +9,7 @@
 #include <sys/stat.h>
 
 int parseInput(char * input, char splitWord[][500], int maxWords);
-void changeDirectories();
+void changeDirectories(const char * path);
 enum CommandType detectCommandType(char splitWord[][500], int maxWords, int * redirectionIdx);
 int createCommand(char *** command, char splitWord[][500], int start, int end);
 void freeCommandMem(char *** command, int size);
@@ -17,7 +17,7 @@ void displayCommand(char *** command, int size);
 int executeCommand(char * const* commannd, const char* infile, const char* outfile, char * const* command_2);
 int createFile(char buffer[], char * fileName);
 
-void handleCd(char cwd[], int size);
+void handleCd(char splitWord[][500], char cwd[], int size);
 void handleSimpleCommand(char splitWord[][500], int maxWords);
 void handleInputRedirection(char splitWord[][500], int maxWords, int redirectionIdx);
 void handleOutputRedirection(char splitWord[][500], int maxWords, int redirectionIdx);
@@ -52,7 +52,7 @@ int main() {
 
         switch (cmdType) {
             case CMD_EXIT: return 0;
-            case CMD_CD: handleCd(cwd, sizeof(cwd)); break;
+            case CMD_CD: handleCd(splitWord, cwd, sizeof(cwd)); break;
             case CMD_SIMPLE: handleSimpleCommand(splitWord, maxWords); break;
             case CMD_INPUT_REDIRECTION: handleInputRedirection(splitWord, maxWords, redirectionIdx); break;
             case CMD_OUTPUT_REDIRECTION: handleOutputRedirection(splitWord, maxWords, redirectionIdx); break;
@@ -73,10 +73,18 @@ int parseInput(char * input, char splitWord[][500], int maxWords) {
     return i;
 }
 
-void changeDirectories() {
-    // printf("changeDirectories called\n");
-    return;
+void changeDirectories(const char *path) {
+
+    if (path == NULL || path[0] == '\0') {
+        fprintf(stderr, "chdir Failed: %s\n", strerror(errno));
+        return;
+    }
+
+    if (chdir(path) == -1) {
+        fprintf(stderr, "chdir Failed: %s\n", strerror(errno));
+    }
 }
+
 
 enum CommandType detectCommandType(char splitWord[][500], int maxWords, int * redirectionIdx) {
     char * firstElement = splitWord[0];
@@ -106,8 +114,6 @@ enum CommandType detectCommandType(char splitWord[][500], int maxWords, int * re
 
 int createCommand(char *** command, char splitWord[][500], int start, int end) {
     // printf("\ncreateCommand called\n");
-    // Dynamically allocated c-string array
-    // one more than the number of valid CLI elements
     int size = 0;
     for (int i = start; i < end; i++) {
         if (splitWord[i][0] == 0) {
@@ -163,7 +169,6 @@ int executeCommand(
 
     int isPipe = (command_2 != NULL);
 
-    // Step 1: Create pipe if needed
     if (isPipe) {
         if (pipe(pipe_fds) == -1) {
             perror("pipe failed");
@@ -171,17 +176,13 @@ int executeCommand(
         }
     }
 
-    // Step 2: Fork first child
     pid1 = fork();
     if (pid1 < 0) {
-        // Fork failed
         fprintf(stderr, "fork Failed: %s\n", strerror(errno));
         return -1;
     }
 
     if (pid1 == 0) {
-        // ---- First child ----
-        // Input redirection
         if (infile && infile[0] != '\0') {
             int fd_in = open(infile, O_RDONLY);
             if (fd_in < 0) {
@@ -192,7 +193,6 @@ int executeCommand(
             close(fd_in);
         }
 
-        // Output redirection
         if (outfile && outfile[0] != '\0' && !isPipe) {
             int fd_out = open(outfile, O_WRONLY | O_CREAT | O_TRUNC, 0666);
             if (fd_out < 0) {
@@ -203,21 +203,17 @@ int executeCommand(
             close(fd_out);
         }
 
-        // Pipe output if needed
         if (isPipe) {
-            dup2(pipe_fds[1], STDOUT_FILENO); // redirect stdout to pipe
+            dup2(pipe_fds[1], STDOUT_FILENO);
             close(pipe_fds[0]);
             close(pipe_fds[1]);
         }
 
-        // Execute command
         execvp(command[0], command);
-        // If execvp returns, an error occurred
         fprintf(stderr, "exec Failed: %s\n", strerror(errno));
         _exit(1);
     }
 
-    // Step 3: Fork second child if pipe
     if (isPipe) {
         pid2 = fork();
         if (pid2 < 0) {
@@ -226,13 +222,10 @@ int executeCommand(
         }
 
         if (pid2 == 0) {
-            // ---- Second child ----
-            // Pipe input
-            dup2(pipe_fds[0], STDIN_FILENO); // read from pipe
+            dup2(pipe_fds[0], STDIN_FILENO);
             close(pipe_fds[0]);
             close(pipe_fds[1]);
 
-            // Output redirection if requested
             if (outfile && outfile[0] != '\0') {
                 int fd_out = open(outfile, O_WRONLY | O_CREAT | O_TRUNC, 0666);
                 if (fd_out < 0) {
@@ -248,28 +241,33 @@ int executeCommand(
             _exit(1);
         }
 
-        // ---- Parent process for pipe ----
         close(pipe_fds[0]);
         close(pipe_fds[1]);
         waitpid(pid1, &status, 0);
         waitpid(pid2, &status, 0);
     } else {
-        // ---- Parent process for single command ----
         waitpid(pid1, &status, 0);
     }
 
-    return 0; // Success
+    return 0;
 }
 
 int createFile(char buffer[], char * fileName) {
     // printf("\ncreateFile called\n");
 }
 
-void handleCd(char cwd[], int size) {
-    // printf("\nhandleCd called\n");
-    changeDirectories();
+void handleCd(char splitWord[][500], char cwd[], int size) {
+
+    if (splitWord[1][0] == 0) {
+        fprintf(stderr, "chdir Failed: No path specified\n");
+        return;
+    }
+
+    changeDirectories(splitWord[1]);
+
     getcwd(cwd, size);
 }
+
 
 void handleSimpleCommand(char splitWord[][500], int maxWords) {
     // printf("\nhandleSimpleCommand called\n");
