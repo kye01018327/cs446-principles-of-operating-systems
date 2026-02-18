@@ -11,6 +11,7 @@
 #include <sys/time.h>  
 
 int readFile(char[], int[]);
+void *arraySum(void *);
 
 typedef struct _thread_data_t {
     const int* data;
@@ -50,4 +51,8 @@ int readFile(char fileName[], int intArr[]) {
     }
     fclose(fp);
     return i;
+}
+
+void *arraySum(void *input) {
+
 }
