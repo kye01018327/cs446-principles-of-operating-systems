@@ -10,6 +10,8 @@
 #include <pthread.h>
 #include <sys/time.h>  
 
+int readFile(char[], int[]);
+
 typedef struct _thread_data_t {
     const int* data;
     int startInd;
@@ -23,5 +25,29 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < argc; i++) {
         printf("%d: %s\n", i, argv[i]);
     }
+
+    if (argc != 3) {
+        printf("Three arguments not provided, exiting program ");
+        return -1;
+    }
+    int intArr[1000];
+    printf("%d", readFile(argv[1], intArr));
+
     return 0;
+}
+
+int readFile(char fileName[], int intArr[]) {
+    FILE *fp;
+    fp = fopen(fileName, "r");
+
+    if (fp == NULL) {
+        printf("File not found...\n");
+        return -1;
+    }
+    int i = 0;
+    while (fscanf(fp, "%d", &intArr[i]) == 1) {
+        i++;
+    }
+    fclose(fp);
+    return i;
 }
