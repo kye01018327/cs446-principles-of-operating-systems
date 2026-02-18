@@ -31,8 +31,18 @@ int main(int argc, char* argv[]) {
         printf("Three arguments not provided, exiting program ");
         return -1;
     }
-    int intArr[1000];
-    printf("%d", readFile(argv[1], intArr));
+    int intArr[1000000];
+    int numValues = readFile(argv[1], intArr);
+
+    if (numValues >= atoi(argv[2])) {
+        printf("Too many threads requested\n");
+        return -1;
+    }
+
+    long long int totalSum = 0;
+    struct timeval currentTime;
+    gettimeofday(&currentTime, NULL);
+    printf("%ld\n", currentTime.tv_sec);
 
     return 0;
 }
