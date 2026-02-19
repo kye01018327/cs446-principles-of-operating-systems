@@ -31,19 +31,60 @@ int main(int argc, char* argv[]) {
         printf("Three arguments not provided, exiting program ");
         return -1;
     }
-    int intArr[1000000];
-    int numValues = readFile(argv[1], intArr);
-
-    if (numValues >= atoi(argv[2])) {
+    long long maxValues = 1000000000;
+    int *data = malloc(sizeof(int) * maxValues);
+    int numValues = readFile(argv[1], data);
+    int numThreads = atoi(argv[2]);
+    
+    if (numThreads >= numValues) {
         printf("Too many threads requested\n");
         return -1;
     }
-
+    
     long long int totalSum = 0;
-    struct timeval currentTime;
-    gettimeofday(&currentTime, NULL);
-    printf("%ld\n", currentTime.tv_sec);
+    struct timeval startTime;
+    gettimeofday(&startTime, NULL);
+    
+    pthread_mutex_t lock;
+    pthread_mutex_init(&lock, NULL);
+    
+    threaded_data_t threadedData[numThreads];
+    
+    int sliceSize = numValues / numThreads;
+    int remainder = numValues % numThreads;
+    int startIndex = 0;
 
+    for (int i = 0; i < numThreads; i++) {
+        threadedData[i].data = data;
+        threadedData[i].lock = &lock;
+        threadedData[i].totalSum = &totalSum;
+
+        threadedData[i].startInd = startIndex;
+        threadedData[i].endInd = startIndex + sliceSize;
+        if (i == numThreads - 1) {
+            threadedData[i].endInd += remainder;
+        }
+        startIndex = threadedData[i].endInd;
+    }
+
+    
+    pthread_t threads[numThreads];
+    for (int i = 0; i < numThreads; i++) {
+        pthread_create(&threads[i], NULL, arraySum, &threadedData[i]);
+
+    
+    }
+    for (int i = 0; i < numThreads; i++) {
+        pthread_join(threads[i], NULL);
+    }
+    struct timeval endTime;
+    gettimeofday(&endTime, NULL); 
+    double executionTime = (endTime.tv_sec - startTime.tv_sec) * 1000.0 
+        + (endTime.tv_usec - startTime.tv_usec) / 1000.0;
+    printf("Execution time (milliseconds): %f\n", executionTime);
+    printf("Final Sum: %lld\n", totalSum);
+
+    free(data);
     return 0;
 }
 
@@ -64,5 +105,15 @@ int readFile(char fileName[], int intArr[]) {
 }
 
 void *arraySum(void *input) {
+    threaded_data_t *td = (threaded_data_t *) input;
+    long long int threadSum = 0;
+    for (int i = td->startInd; i < td->endInd; i++) {
+        threadSum += td->data[i];
+    }
 
+    pthread_mutex_lock(td->lock);
+    *(td->totalSum) += threadSum;
+    pthread_mutex_unlock(td->lock);
+
+    pthread_exit(NULL);
 }
