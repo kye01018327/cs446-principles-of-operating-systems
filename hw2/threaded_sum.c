@@ -19,10 +19,9 @@ typedef struct _thread_data_t {
     int endInd;
     pthread_mutex_t *lock;
     long long int *totalSum;
-} threaded_data_t;
+} thread_data_t;
 
 int main(int argc, char* argv[]) {
-    printf("Program start\n");
     for (int i = 0; i < argc; i++) {
         printf("%d: %s\n", i, argv[i]);
     }
@@ -48,7 +47,7 @@ int main(int argc, char* argv[]) {
     pthread_mutex_t lock;
     pthread_mutex_init(&lock, NULL);
     
-    threaded_data_t threadedData[numThreads];
+    thread_data_t threadedData[numThreads];
     
     int sliceSize = numValues / numThreads;
     int remainder = numValues % numThreads;
@@ -71,8 +70,6 @@ int main(int argc, char* argv[]) {
     pthread_t threads[numThreads];
     for (int i = 0; i < numThreads; i++) {
         pthread_create(&threads[i], NULL, arraySum, &threadedData[i]);
-
-    
     }
     for (int i = 0; i < numThreads; i++) {
         pthread_join(threads[i], NULL);
@@ -84,6 +81,7 @@ int main(int argc, char* argv[]) {
     printf("Execution time (milliseconds): %f\n", executionTime);
     printf("Final Sum: %lld\n", totalSum);
 
+    pthread_mutex_destroy(&lock);
     free(data);
     return 0;
 }
@@ -105,7 +103,7 @@ int readFile(char fileName[], int intArr[]) {
 }
 
 void *arraySum(void *input) {
-    threaded_data_t *td = (threaded_data_t *) input;
+    thread_data_t *td = (thread_data_t *) input;
     long long int threadSum = 0;
     for (int i = td->startInd; i < td->endInd; i++) {
         threadSum += td->data[i];
