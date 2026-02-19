@@ -47,29 +47,29 @@ int main(int argc, char* argv[]) {
     pthread_mutex_t lock;
     pthread_mutex_init(&lock, NULL);
     
-    thread_data_t threadedData[numThreads];
+    thread_data_t threadData[numThreads];
     
     int sliceSize = numValues / numThreads;
     int remainder = numValues % numThreads;
     int startIndex = 0;
 
     for (int i = 0; i < numThreads; i++) {
-        threadedData[i].data = data;
-        threadedData[i].lock = &lock;
-        threadedData[i].totalSum = &totalSum;
+        threadData[i].data = data;
+        threadData[i].lock = &lock;
+        threadData[i].totalSum = &totalSum;
 
-        threadedData[i].startInd = startIndex;
-        threadedData[i].endInd = startIndex + sliceSize;
+        threadData[i].startInd = startIndex;
+        threadData[i].endInd = startIndex + sliceSize;
         if (i == numThreads - 1) {
-            threadedData[i].endInd += remainder;
+            threadData[i].endInd += remainder;
         }
-        startIndex = threadedData[i].endInd;
+        startIndex = threadData[i].endInd;
     }
 
     
     pthread_t threads[numThreads];
     for (int i = 0; i < numThreads; i++) {
-        pthread_create(&threads[i], NULL, arraySum, &threadedData[i]);
+        pthread_create(&threads[i], NULL, arraySum, &threadData[i]);
     }
     for (int i = 0; i < numThreads; i++) {
         pthread_join(threads[i], NULL);
