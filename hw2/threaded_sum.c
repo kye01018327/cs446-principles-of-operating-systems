@@ -22,11 +22,7 @@ typedef struct _thread_data_t {
 } thread_data_t;
 
 int main(int argc, char* argv[]) {
-    for (int i = 0; i < argc; i++) {
-        printf("%d: %s\n", i, argv[i]);
-    }
-
-    if (argc != 3) {
+if (argc != 3) {
         printf("Three arguments not provided, exiting program ");
         return -1;
     }
@@ -103,15 +99,15 @@ int readFile(char fileName[], int intArr[]) {
 }
 
 void *arraySum(void *input) {
-    thread_data_t *td = (thread_data_t *) input;
+    thread_data_t *threadData = (thread_data_t *) input;
     long long int threadSum = 0;
-    for (int i = td->startInd; i < td->endInd; i++) {
-        threadSum += td->data[i];
+    for (int i = threadData->startInd; i < threadData->endInd; i++) {
+        threadSum += threadData->data[i];
     }
 
-    pthread_mutex_lock(td->lock);
-    *(td->totalSum) += threadSum;
-    pthread_mutex_unlock(td->lock);
+    pthread_mutex_lock(threadData->lock);
+    *(threadData->totalSum) += threadSum;
+    pthread_mutex_unlock(threadData->lock);
 
     pthread_exit(NULL);
 }
