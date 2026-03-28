@@ -62,7 +62,7 @@ void print_progress(pid_t localTid, size_t value) {
 	strcpy(buffer, prefix);
 	for (; i < bound; ++i)
 	{
-	    buffer[prefix_length + i] = i < value/10000 ? '#' : ' ';
+	    buffer[prefix_length + i] = i < value/300000 ? '#' : ' ';
 	}
 	strcpy(&buffer[prefix_length + i], suffix);
         
@@ -92,25 +92,20 @@ void *arraySum(void *input) {
 
     while (1) {
         long long int threadSum = 0;
-        long latency_max = 0;
+        struct timespec start, end;
 
+        clock_gettime(CLOCK_MONOTONIC, &start);
         for (int i = 0; i < td->numVals; i++) {
-            struct timespec start, end;
-
-            clock_gettime(CLOCK_MONOTONIC, &start);
             threadSum += td->data[i];
-            clock_gettime(CLOCK_MONOTONIC, &end);
-
-            long latency = (end.tv_sec - start.tv_sec) * 1000000000L + (end.tv_nsec - start.tv_nsec);
-            if (latency > latency_max) {
-                latency_max = latency;
-            }
         }
-        print_progress(td->localTid, latency_max);
+        clock_gettime(CLOCK_MONOTONIC, &end);
+
+        long latency = (end.tv_sec - start.tv_sec) * 1000000000L + (end.tv_nsec - start.tv_nsec);
+        print_progress(td->localTid, latency);
+
         pthread_mutex_lock(td->lock);
         *(td->totalSum) += threadSum;
         pthread_mutex_unlock(td->lock);
-        
     }
 }
 
