@@ -1,3 +1,4 @@
+#define _POSIX_C_SOURCE 199309L
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -19,6 +20,35 @@ typedef struct _thread_data_t {
     pthread_mutex_t *lock;
     long long int *totalSum;
 } thread_data_t;
+
+
+void *testFunc(void *input) {
+    thread_data_t *td = (thread_data_t *)input;
+    printf("Thread %d executed\n", td->localTid);
+}
+
+void *arraySum(void *input) {
+    thread_data_t *td = (thread_data_t *)input;
+
+    while (1) {
+        long long int threadSum = 0;
+        long latency_max = 0;
+
+        struct timespec start, end;
+        clock_gettime(CLOCK_MONOTONIC, &start);
+
+        for (int i = 0; i < td->numVals; i++) {
+            threadSum += td->data[i];
+        }
+
+        clock_gettime(CLOCK_MONOTONIC, &end);
+
+        long latency = (end.tv_sec - start.tv_sec) * 1000000000L + (end.tv_nsec - start.tv_nsec);
+
+        if (latency > )
+    }
+}
+
 
 int main(int argc, char *argv[]) {
     // Check if two arguments have been provided
@@ -48,9 +78,15 @@ int main(int argc, char *argv[]) {
         td_arr[i].totalSum = &totalSum;
     }
 
-    pthread_t pthreads[num_threads];
+    pthread_t threads[num_threads];
 
-    for (int i = 0; i < )
+    for (int i = 0; i < num_threads; i++) {
+        pthread_create(&threads[i], NULL, testFunc, &td_arr[i]);
+    }
+
+    for (int i = 0; i < num_threads; i++) {
+        pthread_join(threads[i], NULL);
+    }
 
     
     free(data);
