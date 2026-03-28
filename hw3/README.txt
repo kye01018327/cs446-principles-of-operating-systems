@@ -1,0 +1,1434 @@
+a)
+# WITHOUT MUTUAL EXCLUSION
+
+## RUN 1 ----------------------------------------------------------------------------------------------------------
+
+Main started.
+                Tasks 1 && 2 not both Finished yet - Waiting...
+                TIME SLICE EXPIRED
+Task 1 started.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 started.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXP          TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 finished.
+                Tasks 1 && 2 not both Finished yet - Waiting...
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 finished.
+Main: Finished. Final counter: 16037
+
+## RUN 2 ----------------------------------------------------------------------------------------------------------
+
+Main started.
+                Tasks 1 && 2 not both Finished yet - Waiting...
+                TIME SLICE EXPIRED
+Task 1 started.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 started.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 finished.
+                Tasks 1 && 2 not both Finished yet - Waiting...
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 finished.
+Main: Finished. Final counter: -14072
+
+## RUN 3 ----------------------------------------------------------------------------------------------------------
+
+Main started.
+                Tasks 1 && 2 not both Finished yet - Waiting...
+                TIME SLICE EXPIRED
+Task 1 started.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 started.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 finished.
+                Tasks 1 && 2 not both Finished yet - Waiting...
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 finished.
+Main: Finished. Final counter: 4723
+
+b)
+# WITH MUTUAL EXCLUSION
+
+## RUN 1 ----------------------------------------------------------------------------------------------------------
+
+Main started.
+                Tasks 1 && 2 not both Finished yet - Waiting...
+                TIME SLICE EXPIRED
+Task 1 started.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 started.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 finished.
+                Tasks 1 && 2 not both Finished yet - Waiting...
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 finished.
+Main: Finished. Final counter: 0
+
+## RUN 2 ----------------------------------------------------------------------------------------------------------
+
+Main started.
+                Tasks 1 && 2 not both Finished yet - Waiting...
+                TIME SLICE EXPIRED
+Task 1 started.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 started.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 finished.
+                Tasks 1 && 2 not both Finished yet - Waiting...
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 finished.
+Main: Finished. Final counter: 0
+
+## RUN 3 ----------------------------------------------------------------------------------------------------------
+
+Main started.
+                Tasks 1 && 2 not both Finished yet - Waiting...
+                TIME SLICE EXPIRED
+Task 1 started.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+Task 2 started.
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+                TIME SLICE EXPIRED
+                TIME SLICE EXPIRED
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 running.
+Task 1 finished.
+                Tasks 1 && 2 not both Finished yet - Waiting...
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+Task 2 running.
+                TIME SLICE EXPIRED
+Task 2 running.
+Task 2 running.
+Task 2 finished.
+Main: Finished. Final counter: 0
