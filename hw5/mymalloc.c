@@ -31,31 +31,31 @@ void * mymalloc(size_t size);
 void myfree(void *ptr);
 
 int main(int argc, char *argv[]){
-    printMemList(mlist.head); // 1
+    printMemList(mlist.head);
     void * p1 = mymalloc(10);
-    printMemList(mlist.head); // 2
+    printMemList(mlist.head);
     void * p2 = mymalloc(100);
-    printMemList(mlist.head); // 3
+    printMemList(mlist.head);
     void * p3 = mymalloc(200);
-    printMemList(mlist.head); // 4
+    printMemList(mlist.head);
     void * p4 = mymalloc(500);
-    printMemList(mlist.head); // 5
+    printMemList(mlist.head);
     myfree(p3); p3 = NULL;
-    printMemList(mlist.head); // 6
+    printMemList(mlist.head);
     myfree(p2); p2 = NULL;
-    printMemList(mlist.head); // 7
+    printMemList(mlist.head);
     void * p5 = mymalloc(150);
-    printMemList(mlist.head); // 8
+    printMemList(mlist.head); 
     void * p6 = mymalloc(500);
-    printMemList(mlist.head); // 9
+    printMemList(mlist.head);
     myfree(p4); p4 = NULL;
-    printMemList(mlist.head); // 10
+    printMemList(mlist.head);
     myfree(p5); p5 = NULL;
-    printMemList(mlist.head); // 11
+    printMemList(mlist.head);
     myfree(p6); p6 = NULL;
-    printMemList(mlist.head); // 12
+    printMemList(mlist.head);
     myfree(p1); p1 = NULL;
-    printMemList(mlist.head); // 13
+    printMemList(mlist.head);
     return 0;
 }
 void printMemList(const mblock_t* head) {
